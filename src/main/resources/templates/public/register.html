@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{master}">
+<head>
+    <title>Library Management Application :: Register</title>
+</head>
+<body>
+	<div layout:fragment="maincontent">
+		<form th:action="@{/user/registeruser}" th:object="${student}">
+			<p>
+				<input type="text" placeholder="Enter username" th:field="*{username}">
+			</p>
+			<p>
+				<input type="password" placeholder="Enter password" th:field="*{password}">
+			</p>
+			<p>
+				Country:
+				<select th:field="*{country}">
+					<option th:each="country : ${countries}" th:value="${country.code}" th:text="${country.name}">
+				</select>
+			</p>
+			<p>
+				Gender:
+				<input type="radio" name="gender" value="M" th:field="*{gender}">Male &nbsp;
+				<input type="radio" name="gender" value="F" th:field="*{gender}">Female
+			</p>
+			<button type="submit">Register</button>
+		</form>
+	</div>
+</body>
+</html>
